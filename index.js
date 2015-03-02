@@ -10,8 +10,9 @@ exports.register = function (plugin, opts, next) {
     opts.db = opts.db || 'test';
   } else {
     var url = require('url').parse(opts.url);
-    opts.port = url.port || 28015;
+    opts.port = parseInt(url.port) || 28015;
     opts.host = url.hostname || 'localhost';
+    opts.db = url.pathname ? url.pathname.replace(/^\//, '') : 'test';
 
     if (url.auth)
       opts.authKey = url.auth.split(':')[1];
