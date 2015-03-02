@@ -25,12 +25,12 @@ exports.register = function (plugin, opts, next) {
       return next(err);
     }
 
+    plugin.expose('client', conn);
+    plugin.expose('library', rethink);
+    plugin.bind({ rethinkdb: conn });
+    
     plugin.log(['hapi-rethinkdb', 'info'], 'RethinkDB connection established');
     return next();
-
-    plugin.expose('client', client);
-    plugin.expose('library', rethink);
-    plugin.bind({ rethinkdb: client });
   });
 };
 
