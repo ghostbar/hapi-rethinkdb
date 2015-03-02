@@ -5,7 +5,7 @@ var rethink = require('rethinkdb');
 exports.register = function (plugin, opts, next) {
   opts = opts || {};
   if (!opts.url) {
-    opts.port = ops.port || 28015;
+    opts.port = opts.port || 28015;
     opts.host = opts.host || 'localhost';
     opts.db = opts.db || 'test';
   } else {
