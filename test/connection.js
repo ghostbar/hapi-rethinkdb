@@ -19,13 +19,13 @@ describe('Testing Hapi RethinkDB plugin', function () {
     server.register({
       register: require('../')
     }, function () {
-      assert(server.plugins['hapi-rethinkdb'].client, 'No RethinkDB client returned');
+      assert(server.plugins['hapi-rethinkdb'].connection, 'No RethinkDB connection returned');
       assert(
-        server.plugins['hapi-rethinkdb'].client.host === 'localhost', 
+        server.plugins['hapi-rethinkdb'].connection.host === 'localhost',
         'Connected to incorrect address'
       );
       assert(
-        server.plugins['hapi-rethinkdb'].client.port === 28015, 
+        server.plugins['hapi-rethinkdb'].connection.port === 28015,
         'Connected to incorrect port'
       );
       done();
@@ -36,7 +36,7 @@ describe('Testing Hapi RethinkDB plugin', function () {
     server.register({
       register: require('../')
     }, function () {
-      assert(server.plugins['hapi-rethinkdb'].client.open, 'Did not connect');
+      assert(server.plugins['hapi-rethinkdb'].connection.open, 'Did not connect');
       done();
     });
   });
@@ -47,11 +47,11 @@ describe('Testing Hapi RethinkDB plugin', function () {
       options: { url: 'rethinkdb://localhost:28015' }
     }, function () {
       assert(
-        server.plugins['hapi-rethinkdb'].client.host === 'localhost', 
+        server.plugins['hapi-rethinkdb'].connection.host === 'localhost',
         'Connected to incorrect address'
       );
       assert(
-        server.plugins['hapi-rethinkdb'].client.port === 28015, 
+        server.plugins['hapi-rethinkdb'].connection.port === 28015,
         'Connected to incorrect port'
       );
       done();
@@ -64,11 +64,11 @@ describe('Testing Hapi RethinkDB plugin', function () {
       options: { url: 'rethinkdb://localhost' }
     }, function () {
       assert(
-        server.plugins['hapi-rethinkdb'].client.host === 'localhost', 
+        server.plugins['hapi-rethinkdb'].connection.host === 'localhost',
         'Connected to incorrect address'
       );
       assert(
-        server.plugins['hapi-rethinkdb'].client.port === 28015, 
+        server.plugins['hapi-rethinkdb'].connection.port === 28015,
         'Connected to incorrect port'
       );
       done();
