@@ -47,4 +47,4 @@ License
 
 Licensed under the terms of the ISC. A copy of the license can be found in the file `LICENSE`.
 
-© 2015, jose-Luis Rivas `<me@ghostbar.co>`
+© 2015, Jose-Luis Rivas `<me@ghostbar.co>`
