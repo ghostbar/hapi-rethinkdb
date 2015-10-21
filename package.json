@@ -25,12 +25,12 @@
   "dependencies": {
   },
   "devDependencies": {
-    "hapi": "^8.2.0",
+    "hapi": ">=8.2.0",
     "rethinkdb": "^2.0.0",
     "mocha": "^2.1.0"
   },
   "peerDependencies": {
-    "hapi": "^8.2.0",
+    "hapi": ">=8.2.0",
     "rethinkdb": "^2.0.0"
   }
 }

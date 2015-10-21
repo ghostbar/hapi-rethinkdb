@@ -1,7 +1,7 @@
 hapi-rethinkdb
 ==============
 
-Hapi (^8.0) plugin for `rethinkdb` [native driver](https://www.npmjs.com/package/rethinkdb).
+Hapi (>=8.0) plugin for `rethinkdb` [native driver](https://www.npmjs.com/package/rethinkdb).
 
 Install hapi-rethinkdb
 ----------------------
