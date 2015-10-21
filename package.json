@@ -1,6 +1,6 @@
 {
   "name": "hapi-rethinkdb",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Hapi's rethinkdb plugin",
   "main": "index.js",
   "scripts": {
