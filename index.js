@@ -27,6 +27,7 @@ exports.register = function (plugin, opts, next) {
 
     plugin.expose('connection', conn);
     plugin.expose('library', rethink);
+    plugin.expose('rethinkdb', rethink);
     plugin.bind({
       rethinkdbConn: conn,
       rethinkdb: rethink
