@@ -26,7 +26,7 @@ You can pass as options either an URL (all are optionals, defaults to: no passwo
 Use plugin
 ----------
 
-The connection object returned by `rethinkdb.connect` callback is exposed on `server.plugins['hapi-rethinkdb'].connection` and binded to the context on routes and extensions as `this.rethinkdbConn`. You can find the `rethinkdb` library itself exposed on `server.plugins['hapi-rethinkdb'].library` or binded to the context on routes and extensions as `this.rethinkdb`.
+The connection object returned by `rethinkdb.connect` callback is exposed on `server.plugins['hapi-rethinkdb'].connection` and binded to the context on routes and extensions as `this.rethinkdbConn`. You can find the `rethinkdb` library itself exposed on `server.plugins['hapi-rethinkdb'].library` and `server.plugins['hapi-rethinkdb'].rethinkdb` or binded to the context on routes and extensions as `this.rethinkdb`.
 
 From a handler you can use it like:
 
