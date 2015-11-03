@@ -6,6 +6,10 @@ exports.register = function (plugin, opts, next) {
     opts.port = opts.port || 28015
     opts.host = opts.host || 'localhost'
     opts.db = opts.db || 'test'
+
+    if (opts.password) {
+      opts.authKey = opts.password
+    }
   } else {
     var url = require('url').parse(opts.url)
     opts.port = parseInt(url.port, 10) || 28015
