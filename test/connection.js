@@ -73,4 +73,76 @@ describe('Testing Hapi RethinkDB plugin', function () {
     })
   })
 
+  it('should connect taking the port and the host as an option', function (done) {
+    server.register({
+      register: require('../'),
+      options: {
+        host: 'localhost',
+        port: 28015
+      }
+    }, function () {
+      assert(
+        server.plugins['hapi-rethinkdb'].connection.host === 'localhost',
+        'Connected to incorrect address'
+      )
+      assert(
+        server.plugins['hapi-rethinkdb'].connection.port === 28015,
+        'Connected to incorrect port'
+      )
+      done()
+    })
+  })
+
+  it('should connect to the default port passing only the hostname as an option', function (done) {
+    server.register({
+      register: require('../'),
+      options: { host: 'localhost' }
+    }, function () {
+      assert(
+        server.plugins['hapi-rethinkdb'].connection.host === 'localhost',
+        'Connected to incorrect address'
+      )
+      assert(
+        server.plugins['hapi-rethinkdb'].connection.port === 28015,
+        'Connected to incorrect port'
+      )
+      done()
+    })
+  })
+
+
+  it('should connect to the default host passing only the port number as an option', function (done) {
+    server.register({
+      register: require('../'),
+      options: { port: 28015 }
+    }, function () {
+      assert(
+        server.plugins['hapi-rethinkdb'].connection.host === 'localhost',
+        'Connected to incorrect address'
+      )
+      assert(
+        server.plugins['hapi-rethinkdb'].connection.port === 28015,
+        'Connected to incorrect port'
+      )
+      done()
+    })
+  })
+
+  it('should connect to the default host and port passing only the database name as an option', function (done) {
+    server.register({
+      register: require('../'),
+      options: { db: 'newtest' }
+    }, function () {
+      assert(
+        server.plugins['hapi-rethinkdb'].connection.host === 'localhost',
+        'Connected to incorrect address'
+      )
+      assert(
+        server.plugins['hapi-rethinkdb'].connection.port === 28015,
+        'Connected to incorrect port'
+      )
+      done()
+    })
+  })
+
 })
