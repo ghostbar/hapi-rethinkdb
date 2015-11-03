@@ -20,6 +20,10 @@ exports.register = function (plugin, opts, next) {
       opts.authKey = url.auth.split(':')[1]
   }
 
+  if (opts.url && (opts.host || opts.port || opts.db || opts.password)) {
+    plugin.log(['hapi-rethinkdb', 'warn'], 'Define either an URL or host, port, db and password variables')
+  }
+
   rethink.connect(opts, function (err, conn) {
     if (err) {
       plugin.log(['hapi-rethinkdb', 'error'], err.message)
