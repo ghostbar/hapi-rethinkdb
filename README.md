@@ -18,7 +18,7 @@ You can pass as options either an URL (all are optionals, defaults to: no passwo
 
     server.register({
       register: require('hapi-rethinkdb'),
-      opts: { url: 'rethinkdb://:password@domain.tld:port/dbname' }
+      options: { url: 'rethinkdb://:password@domain.tld:port/dbname' }
     }, function (err) {
       if (err) console.error(err);
     });
