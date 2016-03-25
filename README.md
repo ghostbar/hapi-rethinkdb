@@ -11,8 +11,8 @@ Install hapi-rethinkdb
 Register plugin
 ---------------
 
-You can pass as options either an URL (all are optionals, defaults to: no password, localhost and ) or `host` and `port`. Obviously passing an URL is way more convenient (specially for 12factor-compliant apps).
-
+You can pass as options either an URL or `host` and `port`. Obviously passing an URL is way more convenient (specially for 12factor-compliant apps).
+```js
     var Hapi = require('hapi');
     var server = new Hapi.Server();
 
@@ -22,6 +22,18 @@ You can pass as options either an URL (all are optionals, defaults to: no passwo
     }, function (err) {
       if (err) console.error(err);
     });
+```
+
+##### Options
+* `url`: the URL of your RethinkDB instance in form `rethinkdb://password@domain.tld:port/dbname`, default to `rethinkdb://localhost:28015/test`
+
+or
+
+* `host`: the hostname of your RethinkDB instance, default to `localhost`
+* `port`: the port of your RethinkDB instance, default to `28015`
+* `db`: the name of your RethinkDB database, default to `test`
+* `password`: the authentication key to access your RethinkDB, defaults to *no password*
+
 
 Use plugin
 ----------
@@ -30,6 +42,7 @@ The connection object returned by `rethinkdb.connect` callback is exposed on `se
 
 From a handler you can use it like:
 
+```js
     function handler (request, response) {
       var r = request.server.plugins['hapi-rethinkdb'].rethinkdb;
       // r === this.rethinkdb;
@@ -41,6 +54,7 @@ From a handler you can use it like:
         cursor.each(console.log);
       });
     }
+```
 
 License
 -------

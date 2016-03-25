@@ -6,6 +6,10 @@ exports.register = function (plugin, opts, next) {
     opts.port = opts.port || 28015
     opts.host = opts.host || 'localhost'
     opts.db = opts.db || 'test'
+
+    if (opts.password) {
+      opts.authKey = opts.password
+    }
   } else {
     var url = require('url').parse(opts.url)
     opts.port = parseInt(url.port, 10) || 28015
@@ -14,6 +18,10 @@ exports.register = function (plugin, opts, next) {
 
     if (url.auth)
       opts.authKey = url.auth.split(':')[1]
+  }
+
+  if (opts.url && (opts.host || opts.port || opts.db || opts.password)) {
+    plugin.log(['hapi-rethinkdb', 'warn'], 'Define either an URL or host, port, db and password variables')
   }
 
   rethink.connect(opts, function (err, conn) {
